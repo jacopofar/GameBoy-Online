@@ -9,3 +9,5 @@ js/other/.DS_Store
 *.gb
 *.swp
 
+node_modules/
+.idea

@@ -1,0 +1,22 @@
+{
+  "name": "gameboy-instrumented",
+  "version": "1.0.0",
+  "description": "A server-side instrumented gameboy emulator. It allows the server to monitor and influence the game status",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacopofar/GameBoy-Online.git"
+  },
+  "author": "",
+  "license": "GPL 2",
+  "bugs": {
+    "url": "https://github.com/jacopofar/GameBoy-Online/issues"
+  },
+  "homepage": "https://github.com/jacopofar/GameBoy-Online#readme",
+  "dependencies": {
+    "express": "^4.13.0"
+  }
+}
