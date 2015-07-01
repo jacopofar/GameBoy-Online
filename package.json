@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jacopofar/GameBoy-Online#readme",
   "dependencies": {
-    "express": "^4.13.0"
+    "express": "^4.13.0",
+    "express-ws": "^0.2.6"
   }
 }

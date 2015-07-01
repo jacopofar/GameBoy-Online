@@ -1,10 +1,10 @@
 .DS_Store
 
-js/.DS_Store
+static/js/.DS_Store
 
-css/.DS_Store
+static/css/.DS_Store
 
-js/other/.DS_Store
+static/js/other/.DS_Store
 
 *.gb
 *.swp
