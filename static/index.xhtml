@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
     <head>
-        <style type="text/css">@import url(&quot;css/GameBoy.css&quot;);</style>
+        <link href="css/GameBoy.css" rel="stylesheet"/>
         <script type="text/javascript">
     var DEBUG_MESSAGES = false;
     var DEBUG_WINDOWING = false;
@@ -10,17 +10,17 @@
         windowingInitialize();
     }
         </script>
-        <script type="text/javascript" src="js/other/windowStack.js"/>
-        <script type="text/javascript" src="js/other/terminal.js"/>
-        <script type="text/javascript" src="js/other/gui.js"/>
-        <script type="text/javascript" src="js/other/base64.js"/>
-        <script type="text/javascript" src="js/other/json2.js"/>
-        <script type="text/javascript" src="js/other/swfobject.js"/>
-        <script type="text/javascript" src="js/other/resampler.js"/>
-        <script type="text/javascript" src="js/other/XAudioServer.js"/>
-        <script type="text/javascript" src="js/other/resize.js"/>
-        <script type="text/javascript" src="js/GameBoyCore.js"/>
-        <script type="text/javascript" src="js/GameBoyIO.js"/>
+        <script type="text/javascript" src="js/other/windowStack.js"></script>
+        <script type="text/javascript" src="js/other/terminal.js"></script>
+        <script type="text/javascript" src="js/other/gui.js"></script>
+        <script type="text/javascript" src="js/other/base64.js"></script>
+        <script type="text/javascript" src="js/other/json2.js"></script>
+        <script type="text/javascript" src="js/other/swfobject.js"></script>
+        <script type="text/javascript" src="js/other/resampler.js"></script>
+        <script type="text/javascript" src="js/other/XAudioServer.js"></script>
+        <script type="text/javascript" src="js/other/resize.js"></script>
+        <script type="text/javascript" src="js/GameBoyCore.js"></script>
+        <script type="text/javascript" src="js/GameBoyIO.js"></script>
         <title>GameBoy Online</title>
     </head>
     <body>
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div id="terminal" class="window">
-            <div id="terminal_output"/>
+            <div id="terminal_output"></div>
             <div class="button_rack">
                 <button id="terminal_clear_button" class="left">Clear Messages</button>
                 <button id="terminal_close_button" class="right">Close Terminal</button>
@@ -155,7 +155,7 @@
         </div>
         <div class="window" id="local_storage_listing">
             <div id="storageListingMasterContainer" class="storageList">
-                <div id="storageListingMasterContainerSub"/>
+                <div id="storageListingMasterContainerSub"></div>
             </div>
             <div id="download_all_storage">
                 <a href="about:blank" id="download_local_storage_dba">Export all saved data.</a>
@@ -167,7 +167,7 @@
         </div>
         <div class="window" id="local_storage_popup">
             <div id="storagePopupMasterParent" class="storageList">
-                <div id="storagePopupMasterContainer"/>
+                <div id="storagePopupMasterContainer"></div>
             </div>
             <div class="button_rack">
                 <button id="local_storage_popup_close_button" class="center">Close Storage Popup</button>
@@ -175,7 +175,7 @@
         </div>
         <div class="window" id="freeze_listing">
             <div id="freezeListingMasterContainer" class="storageList">
-                <div id="freezeListingMasterContainerSub"/>
+                <div id="freezeListingMasterContainerSub"></div>
             </div>
             <div class="button_rack">
                 <button id="freeze_list_refresh_button" class="left">Refresh List</button>
