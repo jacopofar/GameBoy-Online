@@ -194,7 +194,7 @@ div#GameBoy > div#gfx > canvas {
 }
 div#GameBoy > div#gfx > span#title {
 	position: absolute;
-	top: 30%;
+	top: 10%;
 	left: 15%;
 	font-size: 64px;
 	color: rgb(220, 220, 150);
