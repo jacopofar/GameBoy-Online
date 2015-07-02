@@ -19,6 +19,7 @@ var settings = [						//Some settings.
     [true, true, true, true]            //User controlled channel enables.
 ];
 function start(canvas, ROM) {
+  serverNotify({type: "start"});
 	clearLastEmulation();
 	autoSave();	//If we are about to load a new game, then save the last one...
 	gameboy = new GameBoyCore(canvas, ROM);
