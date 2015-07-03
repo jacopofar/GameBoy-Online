@@ -2,6 +2,7 @@
 var webSocket = new WebSocket("ws://" + location.host + "/gameboy");
 
 function serverNotify(event){
+  event.ts = Date.now();
   webSocket.send(JSON.stringify(event));
 }
 
@@ -13,7 +14,7 @@ webSocket.onmessage = function (event) {
     start(mainCanvas, base64_decode(msg.romData));
   }
   if (msg.command === 'screenshot') {
-    webSocket.send(JSON.stringify({type: 'canvas', content: gameboy.canvas.toDataURL()}));
+    webSocket.send(JSON.stringify({ts:Date.now(),type: 'canvas', content: gameboy.canvas.toDataURL()}));
   }
 }
 
