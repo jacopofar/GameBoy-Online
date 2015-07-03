@@ -1,5 +1,5 @@
 'use strict';
-var webSocket = new WebSocket("ws://localhost:3000/gameboy");
+var webSocket = new WebSocket("ws://" + location.host + "/gameboy");
 
 function serverNotify(event){
   webSocket.send(JSON.stringify(event));
