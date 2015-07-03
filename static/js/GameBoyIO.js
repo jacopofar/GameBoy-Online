@@ -355,7 +355,7 @@ function GameBoyEmulatorPlaying() {
 	return ((gameboy.stopEmulator & 2) == 0);
 }
 function GameBoyKeyDown(key) {
-	serverNotify({type:"keyUp",key:key});
+	serverNotify({type: "keyDown", key: key});
 	if (GameBoyEmulatorInitialized() && GameBoyEmulatorPlaying()) {
 		var keycode = matchKey(key);
 		if (keycode >= 0 && keycode < 8) {
