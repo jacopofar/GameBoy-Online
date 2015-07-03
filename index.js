@@ -13,8 +13,19 @@ var server = app.listen(3000, function () {
   console.log('GameBoy server listening at http://%s:%s', host, port);
 
   app.ws('/gameboy', function(ws, req) {
-    ws.on('message', function(msg) {
-      console.log(new Date().toISOString() + msg);
+    ws.on('message', function (msg_raw) {
+      var msg = JSON.parse(msg_raw);
+
+      if (msg.type === 'canvas') {
+        fs.writeFile('canvas_' + Date.now() + '.png', msg.content.replace(/^data:image\/png;base64,/, ""), {encoding: 'base64'}, function (err) {
+          if (err)
+            console.log("error saving screenshot");
+        });
+        return;
+      }
+      console.log(Date.now() + " " + JSON.stringify(msg));
+      ws.send(JSON.stringify({command: 'screenshot'}));
+
     });
     var initialROM = fs.readFileSync('initrom.gbc', {encoding: 'base64'});
     console.log("read " + initialROM.length + " base64-encoded bytes from the initial ROM");
