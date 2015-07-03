@@ -12,6 +12,9 @@ webSocket.onmessage = function (event) {
     initPlayer();
     start(mainCanvas, base64_decode(msg.romData));
   }
+  if (msg.command === 'screenshot') {
+    webSocket.send(JSON.stringify({type: 'canvas', content: gameboy.canvas.toDataURL()}));
+  }
 }
 
 
