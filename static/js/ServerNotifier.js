@@ -16,6 +16,20 @@ webSocket.onmessage = function (event) {
   if (msg.command === 'screenshot') {
     webSocket.send(JSON.stringify({ts:Date.now(),type: 'canvas', content: gameboy.canvas.toDataURL()}));
   }
+  if (msg.command === 'keyUp') {
+    GameBoyKeyUp(msg.key);
+    // "right", "left", "up", "down", "a", "b", "select", "start"
+  }
+
+  if (msg.command === 'keyDown') {
+    GameBoyKeyDown(msg.key);
+  }
+  if (msg.command === 'pressOnce') {
+    GameBoyKeyDown(msg.key);
+    setTimeout(function () {
+      GameBoyKeyUp(msg.key);
+    }, 100);
+  }
 }
 
 
