@@ -50,6 +50,9 @@ fs.open('play_log.txt', 'a',function(err,fd_log){
           fs.writeFile('canvas_' + msg.ts + '.png', msg.content.replace(/^data:image\/png;base64,/, ""), {encoding: 'base64'}, function (err) {
             if (err)
               console.log("error saving screenshot");
+            expressWs.getWss('/visualizer').clients.forEach(function (client) {
+              client.send(JSON.stringify({command: "canvas", canvas: msg.content}));
+            });
           });
           return;
         }
@@ -65,6 +68,7 @@ fs.open('play_log.txt', 'a',function(err,fd_log){
       ws.send(JSON.stringify({command: 'load ROM', romData: initialROM}));
     });
 
+    app.ws('/visualizer', function (ws, req) {});
 
   });
 });
