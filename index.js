@@ -28,7 +28,7 @@ fs.open('play_log.txt', 'a',function(err,fd_log){
     ircClient.addListener('message', function (from, channel, message) {
       fs.write(fd_log, JSON.stringify({message: message, from: from, ts: Date.now()}) + "\n");
       if (message.toLowerCase() === '!help') {
-        ircClient.say(config.irc_channel, 'See the game at ' + config.host_address + ':3000/game_img Available moves: "right", "left", "up", "down", "a", "b", "select", "start"');
+        ircClient.say(config.irc_channel, 'See the game at http://' + config.host_address + ':3000/game_img.html Available moves: "right", "left", "up", "down", "a", "b", "select", "start"');
       }
 
       if (["right", "left", "up", "down", "a", "b", "select", "start"].indexOf(message.toLowerCase()) !== -1) {
@@ -42,13 +42,11 @@ fs.open('play_log.txt', 'a',function(err,fd_log){
     ircClient.addListener('error', function (message) {
       console.log('error: ', message);
     });
-    var latestSavedCanvas = '';
     app.ws('/gameboy', function(ws, req) {
       ws.on('message', function (msg_raw) {
         var msg = JSON.parse(msg_raw);
 
         if (msg.type === 'canvas') {
-          latestSavedCanvas = 'canvas_' + msg.ts + '.png';
           fs.writeFile('canvas_' + msg.ts + '.png', msg.content.replace(/^data:image\/png;base64,/, ""), {encoding: 'base64'}, function (err) {
             if (err)
               console.log("error saving screenshot");
@@ -67,9 +65,6 @@ fs.open('play_log.txt', 'a',function(err,fd_log){
       ws.send(JSON.stringify({command: 'load ROM', romData: initialROM}));
     });
 
-    app.get('/game_img', function (req, res) {
-      res.sendFile(process.cwd() + '/' + latestSavedCanvas);
-    });
 
   });
 });
