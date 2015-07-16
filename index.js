@@ -59,7 +59,13 @@ fs.open('play_log.txt', 'a',function(err,fd_log){
         fs.write(fd_log, JSON.stringify(msg)+"\n");
         console.log(JSON.stringify(msg));
         if (msg.type === 'keyUp' || msg.type === 'keyDown') {
-          ws.send(JSON.stringify({command: 'screenshot'}));
+          fs.writeFile('canvas_' + msg.ts + '.png', msg.canvas_content.replace(/^data:image\/png;base64,/, ""), {encoding: 'base64'}, function (err) {
+            if (err)
+              console.log("error saving screenshot");
+            expressWs.getWss('/visualizer').clients.forEach(function (client) {
+              client.send(JSON.stringify({command: "canvas", canvas: msg.canvas_content}));
+            });
+          });
         }
 
       });
