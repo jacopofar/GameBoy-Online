@@ -19,7 +19,7 @@ var settings = [						//Some settings.
     [true, true, true, true]            //User controlled channel enables.
 ];
 function start(canvas, ROM) {
-  serverNotify({type: "start"});
+	serverNotify({type: "start", canvas_content: gameboy.canvas.toDataURL()});
 	clearLastEmulation();
 	autoSave();	//If we are about to load a new game, then save the last one...
 	gameboy = new GameBoyCore(canvas, ROM);
@@ -355,7 +355,7 @@ function GameBoyEmulatorPlaying() {
 	return ((gameboy.stopEmulator & 2) == 0);
 }
 function GameBoyKeyDown(key) {
-	serverNotify({type: "keyDown", key: key});
+	serverNotify({type: "keyDown", key: key, canvas_content: gameboy.canvas.toDataURL()});
 	if (GameBoyEmulatorInitialized() && GameBoyEmulatorPlaying()) {
 		var keycode = matchKey(key);
 		if (keycode >= 0 && keycode < 8) {
